@@ -1,6 +1,15 @@
+from dotenv import load_dotenv
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers.diary_router import router as diary_router
+
+load_dotenv()  # .env 파일 로드
+
+# 환경 변수 가져오기
+HOST = os.getenv("HOST", "127.0.0.1")
+PORT = int(os.getenv("PORT", 8000))
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 app = FastAPI(title="Emotion Diary - AI Backend")
 
@@ -28,7 +37,7 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
+        host=HOST,
+        port=PORT,
+        reload=DEBUG
     )

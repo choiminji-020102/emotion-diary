@@ -5,7 +5,11 @@ from openai import OpenAI
 from schemas.diary_schema import SummaryRequest, SummaryResponse, SupportRequest, SupportResponse
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY가 설정되지 않았습니다.")
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 class DiaryService:
   
