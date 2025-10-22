@@ -2,32 +2,69 @@
 
 감정 일기장 웹 애플리케이션입니다. 하루의 감정을 5가지 단계로 기록하고, 월별로 일기를 체계적으로 관리할 수 있으며, GPT-4o-mini 기반 AI가 일기 내용을 요약하고 감정에 맞춘 조언을 제공합니다.
 
-## 🚀 빠른 시작
+## 🚀 시작하기
 
-### 전체 애플리케이션 실행
+### 1. 환경 설정
 
-1. **백엔드 서버 실행**
+**백엔드 설정**
 
-   ```bash
-   cd backend
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   python main.py
-   ```
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-2. **프론트엔드 서버 실행** (새 터미널에서)
+**프론트엔드 설정**
 
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
+```bash
+cd frontend
+npm install
+```
 
-3. **애플리케이션 접속**
-   - 프론트엔드: http://localhost:5173
-   - 백엔드 API: http://localhost:8000
-   - API 문서: http://localhost:8000/docs
+### 2. 환경 변수 설정
+
+백엔드 폴더에 `.env` 파일을 생성하고 다음 내용을 추가하세요:
+
+```env
+OPENAI_API_KEY=sk-proj...
+HOST=0.0.0.0
+PORT=8000
+DEBUG=True
+```
+
+### 3. 애플리케이션 실행
+
+**개발 모드**
+
+```bash
+# 백엔드 실행 (터미널 1)
+cd backend
+python main.py
+
+# 프론트엔드 실행 (터미널 2)
+cd frontend
+npm run dev
+```
+
+**프로덕션 모드**
+
+```bash
+# 백엔드 실행
+cd backend
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+# 프론트엔드 빌드 및 실행
+cd frontend
+npm run build
+npm run preview
+```
+
+### 4. 접속 정보
+
+- 프론트엔드: http://localhost:5173
+- 백엔드 API: http://localhost:8000
+- API 문서: http://localhost:8000/docs
 
 ## 🏗️ 프로젝트 구조
 
@@ -84,77 +121,30 @@ emotion-diary/
 
 ## 📚 상세 문서
 
-- [백엔드 API 문서](./backend/README.md)
-- [프론트엔드 문서](./frontend/README.md)
-
-## 🔧 개발 환경 설정
-
-### 백엔드 설정
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 프론트엔드 설정
-
-```bash
-cd frontend
-npm install
-```
-
-### 환경 변수 설정
-
-백엔드 폴더에 `.env` 파일을 생성하고 다음 내용을 추가하세요:
-
-```env
-OPENAI_API_KEY=sk-proj...
-HOST=0.0.0.0
-PORT=8000
-DEBUG=True
-```
-
-## 🚀 배포
-
-### 백엔드 배포
-
-```bash
-cd backend
-uvicorn main:app --host 0.0.0.0 --port 8000
-```
-
-### 프론트엔드 배포
-
-```bash
-cd frontend
-npm run build
-npm run preview
-```
-
-## 📄 라이선스
-
-이 프로젝트는 개인 학습용으로 제작되었습니다.
+- [Backend 문서](./backend/README.md)
+- [Frontend 문서](./frontend/README.md)
 
 ## 🧑‍💻 Contributors
 
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/8951401e-b401-4325-b7d6-c68100665d46" width="100px" style="border-radius: 50%;"><br/>
-<b>최민지</b><br/>
-<sub><b>Fullstack Developer (FastAPI, React)</b></sub><br/>
-<br/>
-<a href="https://github.com/choiminji">
-<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/>
-</a>
+<table>
+  <tr>
+    <td align="center" width="120px">
+      <img src="https://github.com/user-attachments/assets/8951401e-b401-4325-b7d6-c68100665d46" width="100px" style="border-radius: 50%;">
+    </td>
+    <td align="left">
+      <b>최민지</b><br/>
+      <sub><b>Fullstack Developer (FastAPI, React)</b></sub><br/><br/>
+      <a href="https://github.com/choiminji">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 </div>
 
-## 🤝 기여하기
+## 📄 라이선스
 
-1. 이 저장소를 포크합니다
-2. 새로운 기능 브랜치를 생성합니다 (`git checkout -b feature/amazing-feature`)
-3. 변경사항을 커밋합니다 (`git commit -m 'Add amazing feature'`)
-4. 브랜치에 푸시합니다 (`git push origin feature/amazing-feature`)
-5. Pull Request를 생성합니다
+이 프로젝트는 MIT 라이선스 하에 있습니다.
