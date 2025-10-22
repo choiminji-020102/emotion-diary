@@ -10,25 +10,25 @@ import {
   DiaryDispatchContext,
 } from "./context/DiaryContext";
 
-const mockData = [
-  {
-    id: 1,
-    createdDate: new Date("2025-09-17").getTime(),
-    emotionId: 3,
-    content: "1번 일기 내용 입니다.",
-  },
-  {
-    id: 2,
-    createdDate: new Date("2025-09-01").getTime(),
-    emotionId: 2,
-    content: "2번 일기 내용 입니다.",
-  },
-];
+// const mockData = [
+//   {
+//     id: 1,
+//     createdDate: new Date("2025-09-17").getTime(),
+//     emotionId: 3,
+//     content: "1번 일기 내용 입니다.",
+//   },
+//   {
+//     id: 2,
+//     createdDate: new Date("2025-09-01").getTime(),
+//     emotionId: 2,
+//     content: "2번 일기 내용 입니다.",
+//   },
+// ];
 
 function reducer(state, action) {
   switch (action.type) {
     case "CREATE":
-      return [action.payload, ...state];
+      return [action.payload, ...state]; // action.payload: 새로운 일기 {}, state:기존 일기(들)이 []안에 (여러 혹은 하나의){}로 들어있음.
     case "UPDATE":
       return state.map((item) =>
         String(item.id) === String(action.payload.id) ? action.payload : item
@@ -43,7 +43,7 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, mockData);
+  const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(2);
   // 새로운 일기 추가
   const onCreate = (createdDate, emotionId, content) => {
