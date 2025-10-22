@@ -1,6 +1,6 @@
 # Emotion Diary Backend API
 
-감정 일기 분석 및 AI 조언을 제공하는 FastAPI 백엔드 서버입니다.
+GPT-4o-mini 기반 AI가 긴 일기 내용을 간결하게 요약하고, 사용자의 감정 상태에 맞춰 공감과 심리학 기반 조언을 제공하는 FastAPI 백엔드 서버입니다.
 
 ## 🚀 시작하기
 
