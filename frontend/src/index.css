@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "온글잎누카";
-  src: url("/온글잎누카.ttf");
+  font-family: "memomentKkukkkuk";
+  src: url("/memomentKkukkkuk.ttf");
 }
 
 html,
@@ -23,5 +23,5 @@ body {
 }
 
 body * {
-  font-family: "온글잎누카";
+  font-family: "memomentKkukkkuk";
 }
