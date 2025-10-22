@@ -139,9 +139,17 @@ npm run preview
 
 ## 🧑‍💻 Contributors
 
-| 이름   | 역할                                 | GitHub                                     |
-| ------ | ------------------------------------ | ------------------------------------------ |
-| 최민지 | Fullstack Developer (FastAPI, React) | [@choiminji](https://github.com/choiminji) |
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/8951401e-b401-4325-b7d6-c68100665d46" width="100px" style="border-radius: 50%;"><br/>
+<b>최민지</b><br/>
+<sub><b>Fullstack Developer (FastAPI, React)</b></sub><br/>
+<br/>
+<a href="https://github.com/choiminji">
+<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/>
+</a>
+
+</div>
 
 ## 🤝 기여하기
 
