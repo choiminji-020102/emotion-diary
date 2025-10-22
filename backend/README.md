@@ -7,13 +7,13 @@
 ### 1. 가상환경 설정
 
 ```bash
-# 가상환경 생성
+# 1-1. 가상환경 생성
 python -m venv venv
 
-# 가상환경 활성화 (macOS/Linux)
+# 1-2. 가상환경 활성화 (macOS/Linux)
 source venv/bin/activate
 
-# 가상환경 활성화 (Windows)
+# 1-2. 가상환경 활성화 (Windows)
 venv\Scripts\activate
 ```
 
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 ```env
 # OpenAI API 키
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=sk-proj...
 
 # 서버 설정
 HOST=0.0.0.0
@@ -40,7 +40,7 @@ DEBUG=True
 ### 4. 서버 실행
 
 ```bash
-# 개발 서버 실행 (아직 구현 안 됨)
+# 개발 서버 실행
 python main.py
 
 # 또는 uvicorn으로 직접 실행
@@ -58,15 +58,35 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 ## 🔧 API 엔드포인트
 
-### POST `/api/ai/diary/summary`
+### POST `/api/ai/summary`
 
-일기 내용과 감정을 분석하여 요약과 조언을 제공합니다.
+일기 내용을 분석하여 요약을 제공합니다.
 
 **요청 본문:**
 
 ```json
 {
-  "content": "오늘은 정말 힘든 하루였습니다...",
+  "content": "오늘은 정말 힘든 하루였습니다. 회사에서 프로젝트가 잘못되어 상사에게 혼났고, 집에 와서도 가족과 다툼이 있었습니다."
+}
+```
+
+**응답:**
+
+```json
+{
+  "summary": "회사에서 프로젝트 실패로 상사에게 혼나고, 집에서도 가족과 다툼이 있어 힘든 하루를 보냈습니다."
+}
+```
+
+### POST `/api/ai/support`
+
+일기 내용과 감정을 분석하여 공감과 심리학 기반 조언을 제공합니다.
+
+**요청 본문:**
+
+```json
+{
+  "content": "오늘은 정말 힘든 하루였습니다. 회사에서 프로젝트가 잘못되어 상사에게 혼났고, 집에 와서도 가족과 다툼이 있었습니다.",
   "emotionId": 4
 }
 ```
@@ -75,10 +95,17 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 ```json
 {
-  "summary": "오늘 힘든 하루를 보내며 우울한 감정을 느꼈습니다.",
-  "support": "힘든 하루를 보내셨군요. 이런 감정을 느끼는 것은 자연스러운 일입니다. 충분한 휴식을 취하고, 좋아하는 음악을 들어보시는 것은 어떨까요?"
+  "support": "힘든 하루를 보내셨군요. 여러 스트레스가 겹쳐 더욱 어려웠을 것 같습니다. 충분한 휴식을 취하고, 좋아하는 음악을 들어보시는 것은 어떨까요? 작은 성공이라도 기록해보시면 자기효능감을 회복하는 데 도움이 될 것입니다."
 }
 ```
+
+**감정 ID 매핑:**
+
+- 1: 완전 좋음
+- 2: 약간 좋음
+- 3: 그럭저럭
+- 4: 나쁨
+- 5: 끔찍함
 
 ### GET `/health`
 
@@ -89,7 +116,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```json
 {
   "status": "healthy",
-  "message": "Emotion Diary API is running"
+  "services": ["emotion_diary_api"]
 }
 ```
 
@@ -111,18 +138,10 @@ backend/
 
 ## 🛠️ 개발 환경
 
-- **Python**: 3.9+
+- **Python**: 3.9.6
 - **FastAPI**: 0.115.5
 - **OpenAI**: 2.3.0
 - **Uvicorn**: 0.32.1
-
-## 🤝 기여하기
-
-1. 이 저장소를 포크합니다
-2. 새로운 기능 브랜치를 생성합니다 (`git checkout -b feature/amazing-feature`)
-3. 변경사항을 커밋합니다 (`git commit -m 'Add amazing feature'`)
-4. 브랜치에 푸시합니다 (`git push origin feature/amazing-feature`)
-5. Pull Request를 생성합니다
 
 ## 📄 라이선스
 
