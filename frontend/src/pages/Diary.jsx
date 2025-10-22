@@ -13,6 +13,10 @@ const Diary = () => {
   const params = useParams();
   const currentDiaryItem = useDiary(params.id);
 
+  if (!currentDiaryItem) {
+    return <div />;
+  }
+
   return (
     <div>
       <Header
